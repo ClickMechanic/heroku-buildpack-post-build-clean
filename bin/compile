@@ -33,6 +33,7 @@ export -f remove_file_or_dir
 
 while read file; do
   [[ ! -n "${file}" ]] && continue
+  [[ "${file}" =~ ^#.* ]] && continue # ignore comment lines
 
   if [[ -f "${file}" || -d "${file}" ]]; then
     # Target is a file or directory, remove it
